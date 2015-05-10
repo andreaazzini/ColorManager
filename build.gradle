@@ -22,7 +22,7 @@ android {
 
 def siteUrl = 'https://github.com/andreaazzini/ColorManager'      // Homepage URL of the library
 def gitUrl = 'https://github.com/andreaazzini/ColorManager.git'   // Git repository URL
-group = "azzarcher"                                               // Maven Group ID for the artifact
+group = "com.azzarcher"                                           // Maven Group ID for the artifact
 
 
 install {
