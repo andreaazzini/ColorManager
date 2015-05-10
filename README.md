@@ -4,12 +4,14 @@ A simple and powerful color management Android library. It handles toolbar and/o
 ## Set up
 <b>Gradle</b><br/>
 Add the following line of code in the dependencies block of your application's build.gradle:<br/>
-`compile 'com.azzarcher:colormanager:1.0.0'`
+```java
+compile 'com.azzarcher:colormanager:1.0.0'
+```
 
 ## Usage
 <ol>
   <li>Set up your ColorManager object and set all the needed information.<br/>
-  ```
+  ```java
   ColorManager colorManager = new ColorManager()
       .setToolbar(toolbar)
       .setToolbarColor(toolbarColor)
