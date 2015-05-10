@@ -20,8 +20,8 @@ android {
     }
 }
 
-def siteUrl = 'https://github.com/izacus/FuzzyDateFormatter'      // Homepage URL of the library
-def gitUrl = 'https://github.com/izacus/FuzzyDateFormatter.git'   // Git repository URL
+def siteUrl = 'https://github.com/andreaazzini/ColorManager'      // Homepage URL of the library
+def gitUrl = 'https://github.com/andreaazzini/ColorManager.git'   // Git repository URL
 group = "azzarcher"                                               // Maven Group ID for the artifact
 
 
