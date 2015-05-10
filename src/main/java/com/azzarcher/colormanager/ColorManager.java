@@ -28,7 +28,7 @@ public class ColorManager {
 
     public ColorManager setStatusBarColor(Window window, int statusBarColor) {
         // todo controls on the statusBarColor variable validity
-        window.setStatusBarColor(mStatusBarColor);
+        window.setStatusBarColor(statusBarColor);
         mWindow = window;
         mStatusBarColor = statusBarColor;
         return this;
