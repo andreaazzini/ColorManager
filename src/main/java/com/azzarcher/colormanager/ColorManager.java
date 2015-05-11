@@ -3,25 +3,45 @@ package com.azzarcher.colormanager;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
-import android.support.v7.widget.Toolbar;
 import android.view.Window;
 
 public class ColorManager {
     private static final int DEFAULT_DELAY = 1000;
 
     private Window mWindow;
-    private Toolbar mToolbar;
+    private android.support.v7.widget.Toolbar mSupportToolbar;
+    private android.widget.Toolbar mToolbar;
     private Integer mToolbarColor;
     private Integer mStatusBarColor;
 
-    public ColorManager setToolbar(Toolbar toolbar) {
-        mToolbar = toolbar;
+    public ColorManager setToolbar(android.support.v7.widget.Toolbar toolbar)
+    throws AlreadySetToolbarException {
+        if (mToolbar != null) {
+            mSupportToolbar = toolbar;
+        } else {
+            throw new AlreadySetToolbarException();
+        }
+        return this;
+    }
+
+    public ColorManager setToolbar(android.widget.Toolbar toolbar)
+    throws AlreadySetToolbarException {
+        if (mSupportToolbar != null) {
+            mToolbar = toolbar;
+        } else {
+            throw new AlreadySetToolbarException();
+        }
+
         return this;
     }
 
     public ColorManager setToolbarColor(int toolbarColor) {
         // todo controls on the toolbarColor variable validity
-        mToolbar.setBackgroundColor(toolbarColor);
+        if (mToolbar == null) {
+            mSupportToolbar.setBackgroundColor(toolbarColor);
+        } else if (mSupportToolbar == null) {
+            mToolbar.setBackgroundColor(toolbarColor);
+        }
         mToolbarColor = toolbarColor;
         return this;
     }
@@ -43,8 +63,7 @@ public class ColorManager {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animator) {
                     int transitionColor = (int) animator.getAnimatedValue();
-                    mToolbar.setBackgroundColor(transitionColor);
-                    mToolbarColor = transitionColor;
+                    setToolbarColor(transitionColor);
                 }
             });
             animator.start();
@@ -76,17 +95,24 @@ public class ColorManager {
         return Color.HSVToColor(hsv);
     }
 
-    public class NoToolbarColorException extends Exception {
+    public class NoToolbarColorException extends RuntimeException {
         @Override
         public void printStackTrace() {
             System.err.println("No toolbar color has been set up for this color manager");
         }
     }
 
-    public class NoStatusBarColorException extends Exception {
+    public class NoStatusBarColorException extends RuntimeException {
         @Override
         public void printStackTrace() {
             System.err.println("No status bar color has been set up for this color manager");
+        }
+    }
+
+    public class AlreadySetToolbarException extends RuntimeException {
+        @Override
+        public void printStackTrace() {
+            System.err.println("Either set a toolbar or a supportToolbar");
         }
     }
 }
