@@ -16,7 +16,7 @@ public class ColorManager {
 
     public ColorManager setToolbar(android.support.v7.widget.Toolbar toolbar)
     throws AlreadySetToolbarException {
-        if (mToolbar != null) {
+        if (mToolbar == null) {
             mSupportToolbar = toolbar;
         } else {
             throw new AlreadySetToolbarException();
@@ -26,7 +26,7 @@ public class ColorManager {
 
     public ColorManager setToolbar(android.widget.Toolbar toolbar)
     throws AlreadySetToolbarException {
-        if (mSupportToolbar != null) {
+        if (mSupportToolbar == null) {
             mToolbar = toolbar;
         } else {
             throw new AlreadySetToolbarException();
