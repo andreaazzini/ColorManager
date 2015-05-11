@@ -55,10 +55,14 @@ public class ColorManager {
     }
 
     public void animateToolbar(int toColor) throws NoToolbarColorException {
+        animateToolbar(toColor, DEFAULT_DELAY);
+    }
+
+    public void animateToolbar(int toColor, int delay) throws NoToolbarColorException {
         // todo controls on the toColor variable validity
         if (mToolbarColor != null) {
             ValueAnimator animator = ValueAnimator.ofObject(new ArgbEvaluator(), mToolbarColor, toColor);
-            animator.setDuration(DEFAULT_DELAY);
+            animator.setDuration(delay);
             animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animator) {
@@ -71,10 +75,14 @@ public class ColorManager {
     }
 
     public void animateStatusBar(int toColor) throws NoStatusBarColorException {
+        animateStatusBar(toColor, DEFAULT_DELAY);
+    }
+
+    public void animateStatusBar(int toColor, int delay) throws NoStatusBarColorException {
         // todo controls on the toColor variable validity
         if (mStatusBarColor != null) {
             ValueAnimator animator = ValueAnimator.ofObject(new ArgbEvaluator(), mStatusBarColor, toColor);
-            animator.setDuration(DEFAULT_DELAY);
+            animator.setDuration(delay);
             animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animator) {
