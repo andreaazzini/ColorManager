@@ -1,5 +1,5 @@
 # ColorManager
-A simple and powerful color management Android library. It handles toolbar and status bar color design, and supports animations.
+A simple color manager for Android. It handles toolbar and status bar color design, and supports animations.
 
 ## Set up
 ###Gradle
